@@ -1,6 +1,6 @@
 import express from 'express';
 import { index } from './routes/index.mjs';
-import { LockControl } from './helpers/lockControlConsole.mjs';
+import { LockControl } from './helpers/lockControl.mjs';
 import { gotkey } from './routes/gotkey.mjs';
 
 // Create the express application

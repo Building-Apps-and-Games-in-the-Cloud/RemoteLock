@@ -10,7 +10,7 @@ router.post('/',  (request, response) => {
 
   let key = request.body.key;
   if (key == "sesame"){
-    lockControl.open();
+    lockControl.pulse();
   }
   response.redirect('/index.html');
 });

@@ -21,7 +21,7 @@ let lockControl = new OutGPIO();
 lockControl.init();
 export { lockControl as lockControl };
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
     console.log("Server running");

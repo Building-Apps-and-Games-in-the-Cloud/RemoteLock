@@ -1,38 +1,36 @@
 import * as onoff from 'onoff'; //include onoff to interact with the GPIO
 
-class LockControl {
+class OutGPIO {
     constructor() {
     }
 
     init() {
-        console.log("Initialising lock");
+        console.log("Initialising OutGPIO");
         if(onoff.Gpio.accessible){
             this.gpio = new onoff.Gpio(4, 'out'); 
         }
     }
 
-    open(){
-        console.log("Open lock");
+    on(){
+        console.log("OutGPIO on");
         if(onoff.Gpio.accessible){
             this.gpio.writeSync(1);
         }
     }
 
     pulse(){
-        console.log("Pulse lock");
-        if(onoff.Gpio.accessible){
-            this.gpio.writeSync(1);
-        }
-        setTimeout(()=>{this.close();}, 1000);
+        console.log("Pulse OutGPIO");
+        this.on();
+        setTimeout(()=>{this.off();}, 1000);
     }
 
-    close(){
+    off(){
         if(onoff.Gpio.accessible){
             this.gpio.writeSync(0);
         }
-        console.log("Close lock");
+        console.log("OutGPIO off");
     }
 }
 
-export { LockControl };
+export { OutGPIO as OutGPIO };
 

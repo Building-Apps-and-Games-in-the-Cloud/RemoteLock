@@ -1,6 +1,6 @@
 import express from 'express';
 import { index } from './routes/index.mjs';
-import { LockControl } from './helpers/lockControl.mjs';
+import { OutGPIO } from './helpers/OutGPIO.mjs';
 import { gotkey } from './routes/gotkey.mjs';
 
 // Create the express application
@@ -17,11 +17,11 @@ app.use('/index.html', index);
 app.use('/gotkey', gotkey);
 
 // Create lock control
-let lockControl = new LockControl();
+let lockControl = new OutGPIO();
 lockControl.init();
 export { lockControl as lockControl };
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 app.listen(port, () => {
     console.log("Server running");
